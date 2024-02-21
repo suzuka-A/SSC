@@ -1,0 +1,400 @@
+openapi: 3.0.0
+info:
+    title: SSC API設計書
+    version: 1.0.0
+tags:
+  - name: チャンネル
+    description: チャンネルに関するAPI
+  - name: グループ
+    description: グループに関するAPI
+paths:
+ /channel/create:
+    post:
+        tags:
+            - チャンネル
+        summary: チャンネル作成
+        requestBody:
+            description: Created channel object
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            channel_id:
+                                type: integer
+                                example: 1
+                            name:
+                                type: string
+                                example: channel name1
+                            create_user:
+                                type: string
+                                example: A00000
+                            visiable:
+                                type: string
+                                example: public
+                            created_at:
+                                type: string
+                                format: date-time
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                channel_id:
+                                    type: integer
+                                    example: 1
+                                name:
+                                    type: string
+                                    example: channel name1
+                                create_user:
+                                    type: string
+                                    example: A00000
+                                visiable:
+                                    type: string
+                                    example: public
+                                created_at:
+                                    type: string
+                                    format: date-time
+ /channel/list/{emp_num}:
+    get:
+        tags:
+            - チャンネル
+        summary: チャンネル一覧取得
+        description: チャンネルを一覧で取得します。<br><font color="red">[検討]自分が所属しているor自分が作成者のチャンネルのみを取得可能です。</font>
+        parameters:
+        - name: emp_num
+          in: path
+          required: true
+          description: 作成者のemp_num
+          schema:
+            type : string
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                properties:
+                                    channel_id:
+                                        type: integer
+                                        example: 1
+                                    name:
+                                        type: string
+                                        example: channnel name1
+                                    visiable:
+                                        type: string
+                                        example: public
+            '404':
+                description: チャンネルが見つからない
+ /channel/{channelId}:
+    get:
+        tags:
+            - チャンネル
+        summary: チャンネル詳細取得
+        description: チャンネルの詳細を取得します。<br><font color="red">[検討]チャンネルに所属しているユーザをどう取得するか。今はemp_numで全て取得。</font>
+        parameters:
+        - name: channelId
+          in: path
+          required: true
+          description: チャンネルID
+          schema:
+            type : integer
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                channel_id:
+                                    type: integer
+                                    example: 1
+                                name:
+                                    type: string
+                                    example: channel name
+                                create_user:
+                                    type: string
+                                    example: A00000
+                                visiable:
+                                    type: string
+                                    example: public
+                                created_at:
+                                    type: string
+                                    format: date-time
+                                updated_at:
+                                    type: string
+                                    format: date-time
+                                disable:
+                                    type: boolean
+                                    example: true
+                                disabled_at:
+                                    type: string
+                                    format: date-time
+                                channel_user:
+                                    type: string
+                                    example: [A00000,A11111,A22222]
+                                
+            '404':
+                description: チャンネルが見つからない時のレスポンス
+    put:
+        tags:
+            - チャンネル
+        summary: チャンネル更新
+        parameters:
+        - name: channelId
+          in: path
+          required: true
+          description: チャンネルID
+          schema:
+            type : integer
+        requestBody:
+            description: Update channel object
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            channel_id:
+                                type: integer
+                                example: 1
+                            name:
+                                type: string
+                                example: channel name
+                            visiable:
+                                type: string
+                                example: public
+                            updated_at:
+                                type: string
+                                format: date-time
+        responses:
+            '200':
+                description: 更新完了
+            '404':
+                description: チャンネルが見つからない
+    delete:
+        tags:
+            - チャンネル
+        summary: チャンネル削除
+        parameters:
+        - name: channelId
+          in: path
+          required: true
+          description: チャンネルID
+          schema:
+            type : integer
+        responses:
+            '200':
+                description: 削除完了
+            '404':
+                description: チャンネルが見つからない
+ /group/create:
+    post:
+        tags:
+            - グループ
+        summary: グループ作成
+        requestBody:
+            description: Created group object
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            group_id:
+                                type: integer
+                                example: 1
+                            name:
+                                type: string
+                                example: group name
+                            admin:
+                                type: string
+                                example: A00000
+                            visiable:
+                                type: string
+                                example: public
+                            created_at:
+                                type: string
+                                format: date-time
+                            status:
+                                type: integer
+                                example: 1
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                group_id:
+                                    type: integer
+                                    example: 1
+                                name:
+                                    type: string
+                                    example: group name
+                                admin:
+                                    type: string
+                                    example: A00000
+                                visiable:
+                                    type: string
+                                    example: public
+                                created_at:
+                                    type: string
+                                    format: date-time
+                                status:
+                                    type: integer
+                                    example: 1
+ /group/list/{admin}:
+    get:
+        tags:
+            - グループ
+        summary: グループ一覧取得
+        description: グループを一覧で取得します。<br>自分が作成者のグループのみを取得可能です。
+        parameters:
+        - name: admin
+          in: path
+          required: true
+          description: 作成者のemp_num
+          schema:
+            type : string
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                properties:
+                                    group_id:
+                                        type: integer
+                                        example: 1
+                                    name:
+                                        type: string
+                                        example: group name
+                                    visiable:
+                                        type: string
+                                        example: public
+                                    status:
+                                        type: integer
+                                        example: 1
+            '404':
+                description: グループが見つからない
+ /group/{groupId}:
+    get:
+        tags:
+            - グループ
+        summary: グループ詳細取得
+        description: グループの詳細を取得します。
+        parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: グループID
+          schema:
+            type : integer
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                group_id:
+                                    type: integer
+                                    example: 1
+                                name:
+                                    type: string
+                                    example: group name
+                                admin:
+                                    type: string
+                                    example: A00000
+                                visiable:
+                                    type: string
+                                    example: public
+                                created_at:
+                                    type: string
+                                    format: date-time
+                                updated_at:
+                                    type: string
+                                    format: date-time
+                                status:
+                                    type: integer
+                                    example: 1
+                                sql:
+                                    type: string
+                                    example: select slack_id from X where pref = '';
+                                disable:
+                                    type: boolean
+                                    example: true
+                                disabled_at:
+                                    type: string
+                                    format: date-time
+                                group_user:
+                                    type: string
+                                    example: [A00000,A11111,A22222]
+            '404':
+                description: グループが見つからない時のレスポンス
+    put:
+        tags:
+            - グループ
+        summary: グループ更新
+        parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: グループID
+          schema:
+            type : integer
+        requestBody:
+            description: Update group object
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            group_id:
+                                type: integer
+                                example: 1
+                            name:
+                                type: string
+                                example: group name
+                            visiable:
+                                type: string
+                                example: public
+                            updated_at:
+                                type: string
+                                format: date-time
+                            status:
+                                type: integer
+                                example: 1
+                            sql:
+                                type: string
+                                example: select slack_id from X where pref = '';
+        responses:
+            '200':
+                description: 更新完了
+            '404':
+                description: グループが見つからない
+    delete:
+        tags:
+            - グループ
+        summary: グループ削除
+        parameters:
+        - name: groupId
+          in: path
+          required: true
+          description: グループID
+          schema:
+            type : integer
+        responses:
+            '200':
+                description: 削除完了
+            '404':
+                description: グループが見つからない
