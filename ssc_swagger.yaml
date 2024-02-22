@@ -392,3 +392,38 @@ paths:
                 description: 削除完了
             '404':
                 description: グループが見つからない
+ /login/{emp_num}:
+    get:
+        tags:
+            - ログイン
+        summary: ログインユーザ取得
+        description: ログインユーザの情報を取得します。
+        parameters:
+        - name: emp_num
+          in: path
+          required: true
+          description: 社員番号
+          schema:
+            type : integer
+        responses:
+            '200':
+                description: 成功時レスポンス
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                slack_id:
+                                    type: string
+                                    example: U01AAAAAAAA
+                                emp_num:
+                                    type: string
+                                    example: A00000
+                                name:
+                                    type: string
+                                    example: 鈴木　太郎
+                                email:
+                                    type: string
+                                    example: suzuki_tarou@cyberagent.co.jp
+            '404':
+                description: ユーザが見つからない時のレスポンス
