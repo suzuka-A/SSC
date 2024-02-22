@@ -26,9 +26,9 @@ paths:
                             create_user:
                                 type: string
                                 example: A00000
-                            visiable:
-                                type: string
-                                example: public
+                            public:
+                                type: boolean
+                                example: true
                             created_at:
                                 type: string
                                 format: date-time
@@ -49,9 +49,9 @@ paths:
                                 create_user:
                                     type: string
                                     example: A00000
-                                visiable:
-                                    type: string
-                                    example: public
+                                public:
+                                    type: boolean
+                                    example: true
                                 created_at:
                                     type: string
                                     format: date-time
@@ -83,9 +83,9 @@ paths:
                                     name:
                                         type: string
                                         example: channel name1
-                                    visiable:
-                                        type: string
-                                        example: public
+                                    public:
+                                        type: boolean
+                                        example: true
             '404':
                 description: チャンネルが見つからない
  /channel/{channelId}:
@@ -118,9 +118,9 @@ paths:
                                 create_user:
                                     type: string
                                     example: A00000
-                                visiable:
-                                    type: string
-                                    example: public
+                                public:
+                                    type: boolean
+                                    example: true
                                 created_at:
                                     type: string
                                     format: date-time
@@ -163,9 +163,9 @@ paths:
                             name:
                                 type: string
                                 example: channel name
-                            visiable:
-                                type: string
-                                example: public
+                            public:
+                                type: boolean
+                                example: true
                             updated_at:
                                 type: string
                                 format: date-time
@@ -208,9 +208,9 @@ paths:
                             admin:
                                 type: string
                                 example: A00000
-                            visiable:
-                                type: string
-                                example: public
+                            public:
+                                type: boolean
+                                example: true
                             created_at:
                                 type: string
                                 format: date-time
@@ -234,9 +234,9 @@ paths:
                                 admin:
                                     type: string
                                     example: A00000
-                                visiable:
-                                    type: string
-                                    example: public
+                                public:
+                                    type: boolean
+                                    example: true
                                 created_at:
                                     type: string
                                     format: date-time
@@ -271,9 +271,9 @@ paths:
                                     name:
                                         type: string
                                         example: group name
-                                    visiable:
-                                        type: string
-                                        example: public
+                                    public:
+                                        type: boolean
+                                        example: true
                                     status:
                                         type: integer
                                         example: 1
@@ -309,9 +309,9 @@ paths:
                                 admin:
                                     type: string
                                     example: A00000
-                                visiable:
-                                    type: string
-                                    example: public
+                                public:
+                                    type: boolean
+                                    example: true
                                 created_at:
                                     type: string
                                     format: date-time
@@ -359,9 +359,9 @@ paths:
                             name:
                                 type: string
                                 example: group name
-                            visiable:
-                                type: string
-                                example: public
+                            public:
+                                type: boolean
+                                example: true
                             updated_at:
                                 type: string
                                 format: date-time
