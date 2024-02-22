@@ -20,9 +20,6 @@ paths:
                     schema:
                         type: object
                         properties:
-                            channel_id:
-                                type: integer
-                                example: 1
                             name:
                                 type: string
                                 example: channel name1
@@ -85,7 +82,7 @@ paths:
                                         example: 1
                                     name:
                                         type: string
-                                        example: channnel name1
+                                        example: channel name1
                                     visiable:
                                         type: string
                                         example: public
@@ -205,9 +202,6 @@ paths:
                     schema:
                         type: object
                         properties:
-                            group_id:
-                                type: integer
-                                example: 1
                             name:
                                 type: string
                                 example: group name
