@@ -20,18 +20,39 @@ paths:
                     schema:
                         type: object
                         properties:
-                            name:
-                                type: string
-                                example: channel name1
-                            create_user:
-                                type: string
-                                example: A00000
-                            public:
-                                type: boolean
-                                example: true
-                            created_at:
-                                type: string
-                                format: date-time
+                            ssc_channel:
+                                type: object
+                                properties:
+                                    name:
+                                        type: string
+                                        example: channel name1
+                                    create_user:
+                                        type: string
+                                        example: A00000
+                                    public:
+                                        type: boolean
+                                        example: true
+                                    created_at:
+                                        type: string
+                                        format: date-time
+                            ssc_channel_group:
+                                type: object
+                                properties:
+                                    channel_id:
+                                        type: integer
+                                        example: 1
+                                    group_id:
+                                        type: integer
+                                        example: 1
+                            ssc_channel_user:
+                                type: object
+                                properties:
+                                    channel_id:
+                                        type: integer
+                                        example: 1
+                                    emp_num:
+                                        type: string
+                                        example: A12345
         responses:
             '200':
                 description: 成功時レスポンス
@@ -178,6 +199,7 @@ paths:
         tags:
             - チャンネル
         summary: チャンネル削除
+        description: チャンネルを削除します。<br><font color="red">[検討]SSC_CHANNEL_GROUP, SSC_CHANNEL_USER からは物理削除する？</font>
         parameters:
         - name: channelId
           in: path
@@ -380,6 +402,7 @@ paths:
         tags:
             - グループ
         summary: グループ削除
+        description: グループを削除します。<br><font color="red">[検討]SSC_GROUP_USER からは物理削除する？</font>
         parameters:
         - name: groupId
           in: path
