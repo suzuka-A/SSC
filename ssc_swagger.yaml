@@ -236,9 +236,9 @@ paths:
                             created_at:
                                 type: string
                                 format: date-time
-                            status:
-                                type: integer
-                                example: 1
+                            sql:
+                                type: string
+                                example: select slack_id from X where pref = '';
         responses:
             '200':
                 description: 成功時レスポンス
