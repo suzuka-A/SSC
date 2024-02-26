@@ -231,7 +231,7 @@ paths:
                             name:
                                 type: string
                                 example: group name
-                            admin:
+                            emp_num_owner:
                                 type: string
                                 example: A00000
                             public:
@@ -257,7 +257,7 @@ paths:
                                 name:
                                     type: string
                                     example: group name
-                                admin:
+                                emp_num_owner:
                                     type: string
                                     example: A00000
                                 public:
@@ -269,14 +269,14 @@ paths:
                                 status:
                                     type: integer
                                     example: 1
- /group/list/{admin}:
+ /group/list/{emp_num_owner}:
     get:
         tags:
             - グループ
         summary: グループ一覧取得
         description: グループを一覧で取得します。<br>自分が作成者のグループのみを取得可能です。
         parameters:
-        - name: admin
+        - name: emp_num_owner
           in: path
           required: true
           description: 作成者のemp_num
@@ -332,7 +332,7 @@ paths:
                                 name:
                                     type: string
                                     example: group name
-                                admin:
+                                emp_num_owner:
                                     type: string
                                     example: A00000
                                 public:
@@ -406,7 +406,7 @@ paths:
         tags:
             - グループ
         summary: グループ削除
-        description: グループを削除します。<br><font color="red">[検討]SSC_GROUP_USER からは物理削除する？</font>
+        description: グループを削除します。
         parameters:
         - name: groupId
           in: path
