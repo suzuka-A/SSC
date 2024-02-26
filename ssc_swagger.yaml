@@ -231,9 +231,6 @@ paths:
                             name:
                                 type: string
                                 example: group name
-                            emp_num_owner:
-                                type: string
-                                example: A00000
                             public:
                                 type: boolean
                                 example: true
