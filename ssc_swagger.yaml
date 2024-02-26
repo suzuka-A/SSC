@@ -81,14 +81,18 @@ paths:
         tags:
             - チャンネル
         summary: チャンネル一覧取得
-        description: チャンネルを一覧で取得します。<br><font color="red">[検討]自分が所属しているor自分が作成者のチャンネルのみを取得可能です。</font>
+        description: チャンネルを一覧で取得します。<br>ownerパラメータを指定した場合は、指定したユーザが作成者のチャンネル一覧を取得します。<br>memberパラメータを指定した場合は、指定したユーザが所属しているチャンネル一覧を取得します。
         parameters:
-        - name: emp_num
+        - name: owner
           in: path
-          required: true
           description: 作成者のemp_num
           schema:
             type : string
+        - name: member
+          in: path
+          description: 所属者のemp_num
+          schema:
+              type: string
         responses:
             '200':
                 description: 成功時レスポンス
@@ -114,7 +118,7 @@ paths:
         tags:
             - チャンネル
         summary: チャンネル詳細取得
-        description: チャンネルの詳細を取得します。<br><font color="red">[検討]チャンネルに所属しているユーザをどう取得するか。今はemp_numで全て取得。</font>
+        description: チャンネルの詳細を取得します。
         parameters:
         - name: channelId
           in: path
@@ -199,7 +203,7 @@ paths:
         tags:
             - チャンネル
         summary: チャンネル削除
-        description: チャンネルを削除します。<br><font color="red">[検討]SSC_CHANNEL_GROUP, SSC_CHANNEL_USER からは物理削除する？</font>
+        description: チャンネルを削除します。
         parameters:
         - name: channelId
           in: path
