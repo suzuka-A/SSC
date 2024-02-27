@@ -36,23 +36,16 @@ paths:
                                         type: string
                                         format: date-time
                             ssc_channel_group:
-                                type: object
-                                properties:
-                                    channel_id:
-                                        type: integer
-                                        example: 1
-                                    group_id:
-                                        type: integer
-                                        example: 1
-                            ssc_channel_user:
-                                type: object
-                                properties:
-                                    channel_id:
-                                        type: integer
-                                        example: 1
-                                    emp_num:
-                                        type: string
-                                        example: A12345
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        channel_id:
+                                            type: integer
+                                            example: 1
+                                        group_id:
+                                            type: integer
+                                            example: [1,2,3]
         responses:
             '200':
                 description: 成功時レスポンス
