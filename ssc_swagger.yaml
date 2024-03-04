@@ -223,36 +223,22 @@ paths:
                                 properties:
                                     name:
                                         type: string
+                                        example: group_name1
                                     public:
                                         type: boolean
+                                        example: false
                                     created_at:
                                         type: string
                                         format: date-time
                                     sql:
                                         type: string
+                                        example: select slack_id from X where pref = '';
                             ssc_group_user:
                                 type: object
                                 properties:
                                     emp_num:
                                         type: string
-                    examples:
-                        sql:
-                            value:
-                                {
-                                    ssc_group: {
-                                        name: group name1, public: true, created_at: 2019-08-24T14:15:22Z, sql: select slack_id from X where pref = '';
-                                    }
-                                }
-                        sqlなし:
-                            value:
-                                {
-                                    ssc_group: {
-                                        name: group name2, public: false, created_at: 2019-08-24T14:15:22Z
-                                    },
-                                    ssc_group_user: {
-                                        emp_num: [A00000,A11111,A22222]
-                                    }
-                                }
+                                        example: [A00000,A11111,A22222]
         responses:
             '200':
                 description: 成功時レスポンス
