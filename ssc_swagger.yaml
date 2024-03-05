@@ -230,15 +230,24 @@ paths:
                                     created_at:
                                         type: string
                                         format: date-time
-                                    sql:
-                                        type: string
-                                        example: select slack_id from X where pref = '';
                             ssc_group_user:
                                 type: object
                                 properties:
                                     emp_num:
                                         type: string
                                         example: [A00000,A11111,A22222]
+                            ssc_group_group:
+                                type: object
+                                properties:
+                                    group_child_id:
+                                        type: integer
+                                        example: [ 3,7 ]
+                            ssc_group_sql:
+                                type: object
+                                properties:
+                                    sql:
+                                        type: string
+                                        example: select slack_id from X where pref = '';
         responses:
             '200':
                 description: 成功時レスポンス
@@ -247,27 +256,54 @@ paths:
                         schema:
                             type: object
                             properties:
-                                group_id:
-                                    type: integer
-                                    example: 1
-                                name:
-                                    type: string
-                                    example: group name
-                                emp_num_owner:
-                                    type: string
-                                    example: A00000
-                                public:
-                                    type: boolean
-                                    example: true
-                                created_at:
-                                    type: string
-                                    format: date-time
-                                status:
-                                    type: integer
-                                    example: 1
-                                sql:
-                                    type: string
-                                    example: select slack_id from X where pref = '';
+                                ssc_group:
+                                    type: object
+                                    properties:
+                                        group_id:
+                                            type: integer
+                                            example: 1
+                                        name:
+                                            type: string
+                                            example: group_name1
+                                        emp_num_owner:
+                                            type: string
+                                            example: A00000
+                                        public:
+                                            type: boolean
+                                            example: true
+                                        created_at:
+                                            type: string
+                                            format: date-time
+                                        status:
+                                            type: integer
+                                            example: 1
+                                ssc_group_user:
+                                    type: object
+                                    properties:
+                                        group_id:
+                                            type: integer
+                                            example: 1
+                                        emp_num:
+                                            type: string
+                                            example: [ A00000,A11111,A22222 ]
+                                ssc_group_group:
+                                    type: object
+                                    properties:
+                                        group_parent_id:
+                                            type: integer
+                                            example: 1
+                                        group_child_id:
+                                            type: string
+                                            example: [ 3,7 ]
+                                ssc_group_sql:
+                                    type: object
+                                    properties:
+                                        group_id:
+                                            type: integer
+                                            example: 1
+                                        sql:
+                                            type: string
+                                            example: select slack_id from X where pref = '';
  /group/list/{emp_num_owner}:
     get:
         tags:
@@ -346,9 +382,6 @@ paths:
                                 status:
                                     type: integer
                                     example: 1
-                                sql:
-                                    type: string
-                                    example: select slack_id from X where pref = '';
                                 disable:
                                     type: boolean
                                     example: true
@@ -358,6 +391,12 @@ paths:
                                 group_user:
                                     type: string
                                     example: [A00000,A11111,A22222]
+                                group_group:
+                                    type: integer
+                                    example: [ 3,7 ]
+                                group_sql:
+                                    type: string
+                                    example: select slack_id from X where pref = '';
             '404':
                 description: グループが見つからない時のレスポンス
     put:
@@ -393,9 +432,6 @@ paths:
                             status:
                                 type: integer
                                 example: 1
-                            sql:
-                                type: string
-                                example: select slack_id from X where pref = '';
         responses:
             '200':
                 description: 更新完了
